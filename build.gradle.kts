@@ -6,7 +6,7 @@ plugins {
 
 group = "com"
 version = "0.0.1-SNAPSHOT"
-description = "p-14652-1"
+description = "back"
 
 java {
     toolchain {
@@ -27,10 +27,11 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-kafka")
     implementation("org.springframework.boot:spring-boot-starter-webmvc")
-    implementation("org.apache.kafka:kafka-streams")
     compileOnly("org.projectlombok:lombok")
+    testCompileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     annotationProcessor("org.projectlombok:lombok")
+    testAnnotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-kafka-test")
     testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
@@ -38,8 +39,4 @@ dependencies {
 
 tasks.withType<Test> {
     useJUnitPlatform()
-}
-
-tasks.bootBuildImage {
-    runImage = "paketobuildpacks/ubuntu-noble-run:latest"
 }
